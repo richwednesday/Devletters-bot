@@ -2,9 +2,9 @@ const FBMessenger = require('../ui/messenger')
 const messenger = new FBMessenger(process.env.FB_PAGE_TOKEN)
 const session = require('../boombot/session')
 
-module.exports = function(id, start) {
-  if (start) return start(id)
-  
+module.exports = function(id, skipp) {
+  if (skipp) return start(id)
+
   messenger.getProfile(id, (err, res) => {
     if (err) res = {first_name: ""}
 
