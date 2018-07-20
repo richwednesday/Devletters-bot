@@ -10,7 +10,7 @@ module.exports = function(id, payload, details) {
 
 		if (choice === "1") {
 			let groupId = split[1]
-			fetch(`${process.env.CORE_URL}/groups/subscribe&masterKey=${process.env.CORE_API_KEY}`, {
+			fetch(`${process.env.CORE_URL}/groups/subscribe`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
