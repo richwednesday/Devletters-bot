@@ -3,7 +3,7 @@ const messenger = new FBMessenger(process.env.FB_PAGE_TOKEN)
 const session = require('../boombot/session')
 
 module.exports = function(id, skipp) {
-  if (skipp) return start(id)
+  if (skipp) return start(id, 4000)
 
   messenger.getProfile(id, (err, res) => {
     if (err) res = {first_name: ""}
@@ -11,20 +11,20 @@ module.exports = function(id, skipp) {
     messenger.sendTextMessage(id, "Welcome to DevLetters " + res.first_name + ". I am Toby, and I can keep you updated with " + 
       "information in your favorite developer community.", () => {
         
-      start(id)
+      start(id, 7000)
     })
-    session.setState(id, "Step 1")
   })
 }
 
-function start(id) {
+function start(id, timeout) {
   messenger.sendTextMessage(id, "Please select from the communities below 😀", () => {
     messenger.sendHScrollMessage(id, elements, () => {
       setTimeout(() => {
         messenger.sendQuickRepliesMessage(id, "or send your location to search with your location.", [{content_type: "location"}])
-      }, 7000)
+      }, timeout)
     })
   })
+  session.setState(id, "Step 1")
 }
 
 let elements = [

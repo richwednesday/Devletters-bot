@@ -36,7 +36,13 @@ module.exports = function(id, payload, details) {
 	}
 
 	else if (payload === "Manage") {
-		// get all subscribed groups, and ask user to select
+		fetch(`${process.env.CORE_URL}/user/subscription?uid=${uid}&masterKey=${process.env.CORE_API_KEY}`)
+      .then(res => res.json())
+      .then(json => {
+				console.log(json)
+
+				messenger.sendTextMessage(id, "You are or are not subscribed !")
+			})
 	}
 
 }
