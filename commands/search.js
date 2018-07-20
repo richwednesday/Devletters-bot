@@ -25,7 +25,7 @@ function main(id, payload, details) {
         main(id, "Location as Coordinates", [geo.lat, geo.lng, details[1]]) 
       })
   }
-  
+
   else if (payload === "Location as Coordinates") {
     let community_id = details[2] ? details[2].split('/')[1] : null
     fetch(`${process.env.CORE_URL}/groups/location?geo=${details[0]},${details[1]}&community_id=${community_id}&masterKey=${process.env.CORE_API_KEY}`)
@@ -71,8 +71,8 @@ function sendGroup(id, group) {
           "payload": `ASKSubscribe/${group.id}/0`
         }]
 
-        messenger.sendQuickRepliesMessage(id, "Do you want to subscribe to updates from this community?\n\nYou can change " +
-          "your subscriptions by typing 'settings'", elements)
+        messenger.sendQuickRepliesMessage(id, "Do you want to subscribe to updates from " + group.name + "?\n\nYou can change " +
+          "your subscriptions by typing 'settings'.", elements)
       }, group.desc.length * 19)
       
       session.setState(id, `ASKSubscribe/${group.id}`)
