@@ -73,7 +73,7 @@ function sendGroup(id, group) {
 
         messenger.sendQuickRepliesMessage(id, "Do you want to subscribe to updates from this community?\n\nYou can change " +
           "your subscriptions by typing 'settings'", elements)
-      }, group.description.length * 19)
+      }, group.desc.length * 19)
       
       session.setState(id, `ASKSubscribe/${group.id}`)
     })
