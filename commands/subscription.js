@@ -40,9 +40,53 @@ module.exports = function(id, payload, details) {
       .then(res => res.json())
       .then(json => {
 				console.log(json)
+				if (!json.length) return messenger.sendTextMessage(id, "You are currently not subscribed to any group.")
 
-				messenger.sendTextMessage(id, "You are or are not subscribed !")
+				let elements = []
+				for (let group of json) {
+					elements.push({
+						title: group.name,
+						subtitle: group.desc,
+						image_url: group.image_url,
+						buttons: [{
+							type: "postback",
+							title: "Unsubscribe",
+							payload: `Unsubscribe||${group.id}||${group.name}`
+						}]
+					})
+					if (elements.length === 9) break;
+				}
+				messenger.sendTextMessage(id, "Select a group to unsubscribe from.", () => {
+					messenger.sendHScrollMessage(id, elements)
+				})
 			})
+	}
+
+	else if (payload === "Unsubscribe") {
+		let split = details.split('/')
+		let groupId = split[1]
+		let name = split[2]
+		messenger.sendTextMessage(id, `You have been unsubscribed from ${name}`)
+
+		fetch(`${process.env.CORE_URL}/groups/unsubscribe`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				masterKey: process.env.CORE_API_KEY,
+				uid: id,
+				groupId	
+			})
+		})
+		.then(res => {
+			if (res.status === 200) messenger.sendTextMessage(id, `You have been successfully unsubscribed from ${name}.`)
+			else messenger.sendTextMessage(id, "An error occured in your subscription, please try again later.")
+		})
+		.catch(err => {
+			console.log(err)
+			messenger.sendTextMessage(id, "An error occured in your subscription, please try again later.")
+		})
 	}
 
 }

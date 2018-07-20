@@ -25,7 +25,7 @@ function main(id, payload, details) {
         main(id, "Location as Coordinates", [geo.lat, geo.lng, details[1]]) 
       })
   }
-
+  
   else if (payload === "Location as Coordinates") {
     let community_id = details[2] ? details[2].split('/')[1] : null
     fetch(`${process.env.CORE_URL}/groups/location?geo=${details[0]},${details[1]}&community_id=${community_id}&masterKey=${process.env.CORE_API_KEY}`)

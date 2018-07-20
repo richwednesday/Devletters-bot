@@ -12,6 +12,7 @@ function PostbackFilter(id, payload) {
 	if (/^Community/.test(payload)) commands.search(id, "Community", payload)
 	else if (/^ASKSubscribe/.test(payload)) commands.subscription(id, "ASKSubscribe", payload)
 	else if (/^Group/.test(payload)) commands.search(id, "Group", payload)
+	else if (/^Unsubscribe/.test(payload)) commands.subscription(id, "Unsubscribe", payload)
 
 	else if (payload === 'Start') commands.start(id)
 	else if (payload === 'Search Community') commands.start(id, "start")
