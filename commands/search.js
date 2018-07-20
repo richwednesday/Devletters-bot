@@ -58,7 +58,7 @@ function main(id, payload, details) {
 
 function sendGroup(id, group) {
   messenger.sendImageMessage(id, group.image_url, () => {
-    messenger.sendTextMessage(id, group.description, () => {
+    messenger.sendTextMessage(id, group.desc, () => {
 
       setTimeout(() => {
         let elements = [{
