@@ -63,10 +63,9 @@ module.exports = function(id, payload, details) {
 	}
 
 	else if (payload === "Unsubscribe") {
-		let split = details.split('/')
+		let split = details.split('||')
 		let groupId = split[1]
 		let name = split[2]
-		messenger.sendTextMessage(id, `You have been unsubscribed from ${name}`)
 
 		fetch(`${process.env.CORE_URL}/groups/unsubscribe`, {
 			method: 'POST',
