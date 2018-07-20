@@ -36,7 +36,7 @@ module.exports = function(id, payload, details) {
 	}
 
 	else if (payload === "Manage") {
-		fetch(`${process.env.CORE_URL}/user/subscription?uid=${uid}&masterKey=${process.env.CORE_API_KEY}`)
+		fetch(`${process.env.CORE_URL}/user/subscription?uid=${id}&masterKey=${process.env.CORE_API_KEY}`)
       .then(res => res.json())
       .then(json => {
 				console.log(json)
