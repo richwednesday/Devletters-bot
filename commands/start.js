@@ -18,7 +18,7 @@ module.exports = function(id, skipp) {
 }
 
 function start(id) {
-  messenger.sendTextMessage(id, "Please select from the communities below", () => {
+  messenger.sendTextMessage(id, "Please select from the communities below 😀", () => {
     messenger.sendHScrollMessage(id, elements, () => {
       setTimeout(() => {
         messenger.sendQuickRepliesMessage(id, "or send your location to search with your location.", [{content_type: "location"}])
@@ -35,7 +35,7 @@ let elements = [
     buttons: [ {
       type: "postback",
       title: "Select",
-      payload: "Community/01/Facebook Developer Circles"
+      payload: "Community/1/Facebook Developer Circles"
     }]
   },
   {
@@ -45,7 +45,7 @@ let elements = [
     buttons: [ {
       type: "postback",
       title: "Select",
-      payload: "Community/02/Forloop"
+      payload: "Community/2/Forloop"
     }]
   },
   {
@@ -55,7 +55,7 @@ let elements = [
     buttons: [ {
       type: "postback",
       title: "Select",
-      payload: "Community/03/Google Developer Groups"
+      payload: "Community/3/Google Developer Groups"
     }]
   },
   {
@@ -65,7 +65,7 @@ let elements = [
     buttons: [ {
       type: "postback",
       title: "Select",
-      payload: "Community/04/FreeCodeCamp Study Groups"
+      payload: "Community/4/FreeCodeCamp Study Groups"
     }]
   },
   {
@@ -75,7 +75,7 @@ let elements = [
     buttons: [ {
       type: "postback",
       title: "Select",
-      payload: "Community/05/AI Saturdays"
+      payload: "Community/5/AI Saturdays"
     }]
   }
 ]

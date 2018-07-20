@@ -32,8 +32,8 @@ function main(id, payload, details) {
       .then(res => res.json())
       .then(json => {
         console.log(json)
-        if (!json.length) messenger.sendTextMessage(id, "Sorry I could not find communities around you.", () => {
-          messenger.sendTextMessage(id, "You can visit my website here http://waitingforsambwa.com to contribute.")
+        if (!json.length) messenger.sendTextMessage(id, "Sorry I could not find any community around you.", () => {
+          messenger.sendTextMessage(id, "You can visit my website to submit a developer group.")
         })
 
         else if (json.length === 1) sendGroup(id, json[0])
