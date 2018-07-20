@@ -21,7 +21,7 @@ BotProfile = {
 		    {
 		      locale: 'default',
 		      text: "Hi, {{user_first_name}}! I'm Toby from Devletters, and I can keep you updated with your favorite Developer Community. " +
-		      	"Click \"GET STARTED\" to begin." 
+		      	"Click \"GET STARTED\" to begin. 😅" 
 		    },
 		    {
 		      locale: 'fr_FR',
