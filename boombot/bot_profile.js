@@ -20,7 +20,7 @@ BotProfile = {
 		  greeting: [
 		    {
 		      locale: 'default',
-		      text: "Hi, {{user_first_name}}! I'm Toby, and I can keep you updated with your favorite Developer Community. " +
+		      text: "Hi, {{user_first_name}}! I'm Toby from Devletters, and I can keep you updated with your favorite Developer Community. " +
 		      	"Click \"GET STARTED\" to begin." 
 		    },
 		    {

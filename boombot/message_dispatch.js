@@ -34,6 +34,7 @@ function messageTextHandler(id, message, state) {
       session.setState(id, "Clear")
     }
   }
+  else if (state === "Expecting Feedback") commands.feedback(id, "Received Feedback")
 
   else defaultText(id, message)
 }
