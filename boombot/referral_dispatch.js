@@ -32,7 +32,7 @@ module.exports = function(event) {
     if (group) {
       if (group.name && group.image_url) {
         messenger.sendImageMessage(id, group.image_url, () => 
-          messenger.sendTextMessage(id, `You have been successfully subscribed to receive community updates from ${group.image_url}. 🤗`, () => {
+          messenger.sendTextMessage(id, `You have been successfully subscribed to receive community updates from ${group.name}. 🤗`, () => {
           
             let elements = [{
               "content_type": "text",
