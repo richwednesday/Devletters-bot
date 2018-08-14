@@ -35,6 +35,14 @@ function messageTextHandler(id, message, state) {
     }
   }
   else if (state === "Expecting Feedback") commands.feedback(id, "Received Feedback")
+  else if (state === "1a") {
+    if (saying_yes.includes(message)) commands.start(id, "start")
+    else if (saying_yes.includes(message)) commands.start(id, "nope")
+    else {
+      messenger.sendTextMessage(id, "If in doubt, the answer is no :)")
+      session.setState(id, "Clear")
+    }
+  }
 
   else defaultText(id, message)
 }

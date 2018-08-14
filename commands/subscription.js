@@ -1,7 +1,7 @@
 const FBMessenger = require('../ui/messenger')
 const messenger = new FBMessenger(process.env.FB_PAGE_TOKEN)
 const session = require('../boombot/session')
-const fetch = require('node-fetch');
+const fetch = require('node-fetch')
 
 module.exports = function(id, payload, details) {
 	if (payload === "ASKSubscribe") {
@@ -22,7 +22,7 @@ module.exports = function(id, payload, details) {
 				})
 			})
 			.then(res => {
-				if (res.status === 200) messenger.sendTextMessage(id, "You have been successfully subscribed to this group.")
+				if (res.status === 200) messenger.sendTextMessage(id, "You have been successfully subscribed to this group. 🤗")
 				else messenger.sendTextMessage(id, "An error occured in your subscription, please try again later.")
 			})
 			.catch(err => {
@@ -79,7 +79,7 @@ module.exports = function(id, payload, details) {
 			})
 		})
 		.then(res => {
-			if (res.status === 200) messenger.sendTextMessage(id, `You have been successfully unsubscribed from ${name}.`)
+			if (res.status === 200) messenger.sendTextMessage(id, `You have been successfully unsubscribed from ${name}. 😏`)
 			else messenger.sendTextMessage(id, "An error occured in your subscription, please try again later.")
 		})
 		.catch(err => {

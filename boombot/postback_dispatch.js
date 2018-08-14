@@ -1,11 +1,17 @@
 const commands = require('../commands/commands') 
+const referrals = require('./referral_dispatch')
 
 // Routing for postbacks
 function PostbackDispatch(event) {
 	let senderID = event.sender.id
-  let payload = event.postback.payload
+	let payload = event.postback.payload
+	let referral = event.postback.referral
 
-  PostbackFilter(senderID, payload)
+  if (referral) {
+		event.referral = event.postback.referral
+		referrals(event)
+	}
+	else PostbackFilter(senderID, payload)
 }
 
 function PostbackFilter(id, payload) {
@@ -16,6 +22,7 @@ function PostbackFilter(id, payload) {
 
 	else if (payload === 'Start') commands.start(id)
 	else if (payload === 'Search Community') commands.start(id, "start")
+	else if (payload === 'Dont Search') commands.start(id, "nope")
 	else if (payload === 'Manage Subscription') commands.subscription(id, "Manage")
 	else if (payload === 'Feedback') commands.feedback(id, "Ask Feedback")
 

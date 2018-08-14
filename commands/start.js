@@ -2,16 +2,19 @@ const FBMessenger = require('../ui/messenger')
 const messenger = new FBMessenger(process.env.FB_PAGE_TOKEN)
 const session = require('../boombot/session')
 
-module.exports = function(id, skipp) {
-  if (skipp) return start(id, 2000)
+module.exports = function(id, state) {
+  if (state === "nope") return messenger.sendTextMessage(id, "Alright :)")
+  else if (state === "start") return start(id, 2000)
 
   messenger.getProfile(id, (err, res) => {
     if (err) res = {first_name: ""}
 
     messenger.sendTextMessage(id, "Welcome to DevLetters " + res.first_name + ". I am Toby, and I can keep you updated with " + 
       "information in your favorite developer community.", () => {
-        
-      start(id, 7000)
+      
+      setTimeout(() => {
+        start(id, 7000)
+      }, 2500)  
     })
   })
 }
